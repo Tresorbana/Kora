@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* Sage & Navy Vintage Business Theme - Premium Redesign */
+/* 
+Colors:
+#EBF4DD (Light Cream/Sage) - Background
+#90AB8B (Medium Sage) - Secondary/Accent
+#5A7863 (Deep Sage) - Primary
+#3B4953 (Navy/Charcoal) - Foreground/Text/Sidebar
+*/
+
+@layer base {
+  :root {
+    /* Base Colors */
+    --background: 75 40% 96%;
+    /* Slightly lighter for more air */
+    --foreground: 205 17% 24%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 205 17% 24%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 205 17% 24%;
+
+    /* Primary - Deep Sage #5A7863 */
+    --primary: 138 14% 41%;
+    --primary-foreground: 75 40% 98%;
+
+    /* Secondary - Medium Sage #90AB8B */
+    --secondary: 110 15% 62%;
+    --secondary-foreground: 75 40% 98%;
+
+    /* Muted */
+    --muted: 75 20% 92%;
+    --muted-foreground: 205 17% 45%;
+
+    /* Accent */
+    --accent: 138 14% 95%;
+    --accent-foreground: 138 14% 35%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 138 14% 88%;
+    --input: 138 14% 88%;
+    --ring: 138 14% 41%;
+
+    --radius: 1rem;
+    /* More rounded for modern look */
+
+    /* Sidebar - Navy Theme */
+    --sidebar-background: 205 17% 24%;
+    --sidebar-foreground: 75 40% 92%;
+    --sidebar-primary: 138 14% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 205 20% 30%;
+    --sidebar-accent-foreground: 75 40% 92%;
+    --sidebar-border: 205 17% 30%;
+    --sidebar-ring: 138 14% 50%;
+
+    /* Extended Palette */
+    --brand-gradient: linear-gradient(135deg, #5A7863 0%, #3B4953 100%);
+    --brand-soft-gradient: linear-gradient(135deg, #EBF4DD 0%, #D8EAD0 100%);
+  }
+
+  .dark {
+    --background: 205 17% 12%;
+    --foreground: 75 20% 95%;
+
+    --card: 205 17% 16%;
+    --card-foreground: 75 20% 95%;
+
+    --popover: 205 17% 16%;
+    --popover-foreground: 75 20% 95%;
+
+    --primary: 110 15% 65%;
+    --primary-foreground: 205 17% 12%;
+
+    --secondary: 138 14% 45%;
+    --secondary-foreground: 75 20% 95%;
+
+    --muted: 205 17% 22%;
+    --muted-foreground: 205 17% 70%;
+
+    --accent: 205 17% 22%;
+    --accent-foreground: 110 15% 85%;
+
+    --border: 205 17% 25%;
+    --input: 205 17% 25%;
+    --ring: 110 15% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-primary/20 selection:text-primary;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight text-foreground;
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-xl shadow-black/5;
+  }
+
+  .dark .glass {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-md border border-white/40 shadow-sm hover:shadow-xl hover:bg-white/80 transition-all duration-300 rounded-2xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-[#5A7863] to-[#3B4953];
+  }
+
+  .shimmer {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent;
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .btn-premium {
+    @apply relative overflow-hidden bg-[#5A7863] text-white px-6 py-2.5 rounded-xl font-semibold shadow-[0_4px_14px_0_rgba(90, 120, 99, 0.39)] transition-all duration-300 hover:bg-[#4a6350] hover:shadow-[0_6px_20px_rgba(90, 120, 99, 0.23)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline-premium {
+    @apply bg-transparent text-[#5A7863] border-2 border-[#5A7863]/30 px-6 py-2 rounded-xl font-semibold transition-all duration-300 hover:bg-[#5A7863]/5 hover:border-[#5A7863] active:scale-95;
+  }
+
+  .nav-item-active {
+    @apply bg-white/10 text-white shadow-inner border-l-4 border-primary;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40 transition-colors;
+  }
+}
